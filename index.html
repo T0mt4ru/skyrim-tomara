@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomara: The Pure Redguard - Skyrim Character Sheet</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/94/Black-dragon-the-elder-scrolls-v-skyrim.svg" type="image/svg+xml">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,6 +41,11 @@
 </head>
 <body class="p-4 sm:p-6 md:p-8">
     <div class="container mx-auto bg-gray-800 shadow-lg rounded-lg p-6 sm:p-8 md:p-10">
+        <!-- Logo -->
+        <div class="flex justify-center mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Black-dragon-the-elder-scrolls-v-skyrim.svg" alt="Skyrim Dragon Logo" class="w-32 h-32 sm:w-48 sm:h-48 rounded-full shadow-lg p-2 bg-gray-900" onerror="this.onerror=null;this.src='https://placehold.co/192x192/4A5568/CBD5E0?text=Logo+Error';">
+        </div>
+
         <!-- Character Overview -->
         <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 text-center text-yellow-400">Tomara: The Pure Redguard</h1>
         <p class="text-lg sm:text-xl font-medium mb-8 text-center text-gray-300">"No Second Chances" Legendary Difficulty Playthrough</p>
@@ -52,7 +59,7 @@
                 <li><strong class="text-blue-300">Difficulty:</strong> Legendary</li>
                 <li><strong class="text-blue-300">Core Mod:</strong> "<a href="https://creations.bethesda.net/en/skyrim/details/2e1f80a4-54e8-417e-8dca-479b323f0aae/__No_Second_Chances___A_Master_Legendary_Difficult">No Second Chances</a>".</li>
                 <li><strong class="text-blue-300">Civil War Faction:</strong> Stormcloaks (chosen during Helgen escape due to anti-Imperial sentiment).</li>
-                <li><strong class="text-blue-300">Current Level:</strong> 2</li>
+                <li><strong class="text-blue-300">Current Level:</strong> 3</li>
             </ul>
         </section>
 
@@ -61,6 +68,7 @@
             <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-emerald-300 border-b-2 border-emerald-400 pb-2">Perks</h2>
             <ul class="list-disc list-inside space-y-2 text-lg">
                 <li><strong class="text-emerald-300">Level 2: Steel Smithing:</strong> Can create Steel armor and weapons at forges, and improve them twice as much.</li>
+                <li><strong class="text-emerald-300">Level 3: Armsman (1/5):</strong> One-Handed weapons do 20% more damage.</li>
             </ul>
         </section>
 
@@ -187,7 +195,7 @@
                     Pushing deeper, I found another bandit, utterly perplexed by an ancient locking mechanism. He must have been at it for hours, oblivious to my presence. I drew my bow, but before I could release the arrow, poisoned darts shot from hidden crevices, striking him down. These traps, I realized, were not to be underestimated. I solved the puzzle myself; the hints were obvious, carved onto the columns above.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
-                    Past some scurrying rodents, I heard frantic screams echoing through the chambers. Rounding a corner, I saw a Dunmer tangled in a colossal web. As I moved closer, the monstrous shadow of a giant Frostbite Spider loomed. I recoiled, my blade flashing out as I unleashed a stream of fire. The combination of steel and flame brought the wounded beast down quickly. The Dunmer, Arvel the Swift, introduced himself before foolishly fleeing deeper into the barrow, unwilling to share his 'treasure.' Little did he know, my purpose wasn't gold.
+                    Past some scurrying rodents, I heard frantic screams echoing through the chambers. Rounding a corner, I saw a Dunmer tangled in a colossal web. As I moved closer, the monstrous shadow of a giant Frostbite Spider loom. I recoiled, my blade flashing out as I unleashed a stream of fire. The combination of steel and flame brought the wounded beast down quickly. The Dunmer, Arvel the Swift, introduced himself before foolishly fleeing deeper into the barrow, unwilling to share his 'treasure.' Little did he know, my purpose wasn't gold.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
                     I followed Arvel into the burial chambers. The dead here were not resting. Draugr, guardians beyond the grave, stirred from their slumber. Arvel, for all his 'swiftness,' offered little resistance before being cut down. I kept my distance, the rest from earlier having fully returned the feeling to my fingers. Most of them fell to my arrows. Taking precautions, I even took down some of the 'resting' Draugr with preemptive shots. A few still managed to close the distance, but my blade handled them. More traps lay ahead – swinging blades. These Nords certainly protected their dead with fervor.
@@ -237,9 +245,6 @@
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
                     In the Jarl's chambers, we listened as a frantic guard recounted the dragon's presence at the Watchtower. Jarl Balgruuf, his face etched with concern, turned to me, requesting my assistance in checking it out. As a thank you for retrieving the Dragonstone, he presented me with a pair of iron gauntlets, adorned with some minor alchemical enchantment. Just like the steel armor he'd offered before, I took them, and once his gaze was averted, discreetly cast them aside. I wore no armor. My flesh was my shield, honed by speed and will, aided only by my Alteration spells. Balgruuf then suggested I assist his court wizard, Farengar Secret-Fire, with his dragon research.
-                </p>
-                <p class="text-lg mb-4 leading-relaxed">
-                    I would go to the Western Watchtower. Not because the Jarl commanded it, but because Irileth, a fellow professional, saw me as a valuable asset. Her pragmatism and directness resonated with my own Hammerfell spirit.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed italic text-gray-400">
                     (Tirdas, 10:35 AM, 19th of Last Seed, 4E 201)
@@ -464,13 +469,56 @@
                 </p>
             </div>
 
+            <!-- Chapter 19 -->
+            <div id="chapter-19" class="story-chapter">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-gray-200">Chapter 19: The Long Road Back</h3>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Upon realizing there was no quick way back to Riverwood from Morthal, neither by carriage nor boat, I decided the fastest route was through the ancient ruins of Labyrinthian, southeast of Morthal. These ruins cut through the mountains, but I knew my greatest enemy would once again be the biting cold. How these Nords endure such weather is beyond me.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Finding Labyrinthian wasn't difficult; the crumbling ruins were imposing even in their decay. However, the cold proved not to be my only concern. Frost trolls had made these ruins their home. It seemed everything in this Province was either cold, dead, or both. I dispatched two of them as I made my way through the pass, but my dwindling stores of frostbite venom were becoming a worry.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Once past the peak of the mountain pass, the air began to feel warmer, and in the distance, the familiar silhouette of Dragonsreach started to come into view.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Arriving back in Whiterun, I took some much-needed time to rest at the Bannered Mare. As I settled in, Saadia, one of the tavern's Redguard helpers, approached me. She asked me to follow her, hinting at something important she needed to discuss. Upon reaching her room, she unexpectedly drew a blade, threatening to cut me down for supposedly working with the Alik'r. I quickly explained my neutrality, assuring her I had no business with them and no interest in ratting her out. Truth be told, if she hadn't approached me, I wouldn't have even known she was the one they were looking for. She then begged me to take out their leader, a man named Kemtaru. I, however, expressed my firm disinterest in her personal issues; I had my own mess to deal with. With a grudging sigh, she let me go.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    With the bizarre encounter behind me, I made my way to Riverwood with newfound haste, eager to reach the inn. As I stepped inside, I see a familiar-looking woman, although I couldn't quite place where I had met her before...
+                </p>
+                <p class="text-lg mb-4 leading-relaxed italic text-gray-400">
+                    (Tirdas, 9:59 AM, 26th of Last Seed, 4E 201)
+                </p>
+            </div>
+
+            <!-- Chapter 20 -->
+            <div id="chapter-20" class="story-chapter">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-gray-200">Chapter 20: The Sleeping Giant's Attic</h3>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Following the cryptic note from Ustengrav, I arrived at the Sleeping Giant Inn in Riverwood and, as instructed, rented the attic room. It felt utterly absurd to have traversed a dangerous barrow, fighting Draugr and necromancers, only to find a peculiar invitation to a room in a tavern I already knew.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    The innkeeper, Delphine, looked at me with an unusual intensity as I asked for the attic room. Her eyes, filled with a knowing glint, hinted that she was the "friend" who had left the note. She confirmed it, then led me to a hidden room behind the wardrobe in the attic. A secret room! It was all very dramatic for a simple message.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Inside, Delphine revealed her true identity: she was one of the last Blades, an ancient order dedicated to protecting the Dragonborn. She explained that she had been testing me, and that the Greybeards were mistaken in their passive approach to the dragon threat. She believed I was the true Dragonborn and that we needed to actively fight the dragons. She laid out her plan: find a dragon burial site and observe if a dragon truly reanimated from it, proving my unique ability to absorb their souls.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Her conviction was strong, and her plan, while dangerous, was direct. It appealed to my own nature far more than the Greybeards' contemplative studies. My current quest now became clear: to track down a dragon burial site and confront whatever ancient evil stirred there, all to prove my destiny and aid the last of the Blades.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed italic text-gray-400">
+                    (Tirdas, 11:30 AM, 26th of Last Seed, 4E 201)
+                </p>
+            </div>
+
 
             <!-- Story Navigation -->
             <div class="flex justify-between items-center mt-6 pt-4 border-t border-gray-600">
                 <button id="prev-chapter" class="px-5 py-2 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
                     Previous Chapter
                 </button>
-                <span id="chapter-indicator" class="text-lg font-semibold text-gray-300">Chapter 1 of 18</span>
+                <span id="chapter-indicator" class="text-lg font-semibold text-gray-300">Chapter 1 of 20</span>
                 <button id="next-chapter" class="px-5 py-2 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out">
                     Next Chapter
                 </button>
@@ -493,10 +541,10 @@
             </p>
             <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-red-200">Consequences of the Rule:</h3>
             <ul class="list-disc list-inside space-y-2 text-lg">
-                <li><strong class="text-red-300">No Gold Transactions:</strong> Cannot buy or sell anything, as this would level the Speech skill. All gear, potions, and resources must be found as loot.</li>
+                <li><strong class="text-red-300">No Gold Transactions:</strong> Cannot buy or sell anything, as this would level the Speech skill. All gear, potions, and spells must be found as loot.</li>
                 <li><strong class="text-red-300">No Alchemy:</strong> Cannot craft potions or poisons. Survival relies entirely on looted consumables.</li>
                 <li><strong class="text-red-300">No Enchanting:</strong> Cannot create custom enchanted gear. Gear optimization depends solely on found enchanted items.</li>
-                <li><strong class="text-red-300">No Armor Skill Progression:</b> Cannot level Light Armor or Heavy Armor skills. Defensive rating comes purely from base armor values of found items and Alteration spells.</li>
+                <li><strong class="class="text-red-300">No Armor:</strong> Cannot level Light Armor or Heavy Armor skills. Defensive rating comes purely from Alteration spells.</li>
                 <li><strong class="text-red-300">No Shields:</strong> Shields are considered armor, thus forbidden. Block skill can only be used with a weapon.</li>
                 <li><strong class="text-red-300">No Two-Handed Weapons:</strong> No racial bonus.</li>
                 <li><strong class="text-red-300">No Sneak, Lockpicking, Pickpocket:</strong> No racial bonuses.</li>
@@ -563,7 +611,7 @@
         <section class="mb-10 p-4 bg-gray-700 rounded-lg shadow-inner">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-purple-300 border-b-2 border-purple-400 pb-2">Racial Power & Abilities</h2>
             <ul class="list-disc list-inside space-y-2 text-lg">
-                <li><strong class="text-purple-300">Adrenaline Rush:</strong> Regenerate stamina 10x faster for 60 seconds (once per day). Critical for sustained power attacks or escaping dangerous situations.</li>
+                <li><strong class="text-purple-300">Adrenaline Rush:</strong> Regenerate stamina 10x faster for 60 seconds (once per day).</li>
                 <li><strong class="text-purple-300">Poison Resistance:</strong> 50% constant resistance to poison.</li>
             </ul>
         </section>
@@ -575,7 +623,7 @@
                 <li><strong class="text-teal-300">Extreme Resource Scarcity:</strong> Every potion, every piece of food, every scroll is a valuable find. Resource management will be paramount.</li>
                 <li><strong class="text-teal-300">High-Stakes Combat:</strong> The "No Second Chances" mod ensures every enemy encounter is deadly. Without potions, robust armor, or custom enchantments, tactical use of your limited toolkit is vital.</li>
                 <li><strong class="text-teal-300">Pure Adaptability:</strong> You cannot craft or buy specific gear. You must adapt your playstyle and strategy based on whatever loot you manage to acquire.</li>
-                <li><strong class="text-teal-300">Reliance on Base Stats & Found Gear:</strong> Eeffectiveness will be heavily tied to the quality of items found in the world.</li>
+                <li><strong class="text-teal-300">Reliance on Base Stats & Found Gear:</strong> effectiveness will be heavily tied to the quality of items found in the world.</li>
                 <li><strong class="text-teal-300">Vulnerability:</strong> Without strong armor skills, healing potions, or enchantments, Tomara will be highly vulnerable to sustained damage. Positioning and quick, decisive combat will be key.</li>
             </ul>
         </section>
