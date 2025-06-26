@@ -560,9 +560,6 @@
                 <p class="text-lg mb-4 leading-relaxed">
                     I found her theory to be a bit far-fetched, to say the least. Even if the Thalmor were involved, where would they have gotten this first dragon, the one that attacked Helgen? If you ask me, it was nothing more than a bizarre coincidence, a stroke of strange luck that saved me from the executioner's block.
                 </p>
-                <p class="text-lg mb-4 leading-relaxed">
-                    Delphine, undeterred by my skepticism, announced she was heading back to Riverwood. Her next plan was to infiltrate the Thalmor Embassy, and she invited me to seek her out if I ever found myself back in Riverwood.
-                </p>
                 <p class="text-lg mb-4 leading-contained">
                     I decided to pass on her invitation for now. I had made a promise to the Greybeards to retrieve the Horn of Jurgen Windcaller, and this whole Thalmor farce had already consumed enough of my valuable time. My focus was on completing the task I had agreed to.
                 </p>
@@ -727,6 +724,16 @@
         <p class="text-center text-lg mt-8 text-gray-400 italic">
             This playthrough promises to be an incredibly challenging, yet uniquely rewarding experience, forcing a truly "pure" and resourceful approach to Skyrim!
         </p>
+
+        <!-- Visitor Counter and Thanks Note -->
+        <div class="mt-10 p-4 bg-gray-700 rounded-lg shadow-inner text-center">
+            <p id="visitor-count" class="text-lg font-semibold text-gray-300 mb-2">
+                By the Divines, a new traveler approaches! You are the <span id="count-value" class="text-yellow-400">0</span> visitor to this tome.
+            </p>
+            <p class="text-lg text-gray-400">
+                May your road lead you to warm sands. Thank you for visiting!
+            </p>
+        </div>
     </div>
 
     <script>
@@ -810,6 +817,19 @@
                 
                 chapterGrid.appendChild(chapterButton);
             }
+
+            // Visitor Counter Logic
+            const visitorCountElement = document.getElementById('count-value');
+            let visitorCount = localStorage.getItem('skyrimVisitorCount');
+
+            if (visitorCount === null) {
+                visitorCount = 1;
+            } else {
+                visitorCount = parseInt(visitorCount) + 1;
+            }
+
+            localStorage.setItem('skyrimVisitorCount', visitorCount);
+            visitorCountElement.textContent = visitorCount;
         });
     </script>
 </body>
