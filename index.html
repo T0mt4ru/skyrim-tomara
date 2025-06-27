@@ -554,13 +554,16 @@
             <!-- Chapter 22 -->
             <div id="chapter-22" class="story-chapter">
                 <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-gray-200">Chapter 22: Delphine's Dismissal</h3>
-                <p class="text-lg mb-4 leading-relaxed">
+                <p class="text-lg mb-4 leading-contained">
                     With the dragon defeated and its soul absorbed, Delphine shared her theory on the cause of these unsettling reanimations. According to her, the war between the Empire and the Stormcloaks was nearing its end at Helgen, only for a dragon to miraculously swoop in and save Ulfric Stormcloak from decapitation. She posited that the Thalmor, who would undeniably benefit from a prolonged conflict between the Stormcloaks and the Empire, must be behind these dragon attacks. Therefore, she concluded, they must be the ones pulling the strings.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
                     I found her theory to be a bit far-fetched, to say the least. Even if the Thalmor were involved, where would they have gotten this first dragon, the one that attacked Helgen? If you ask me, it was nothing more than a bizarre coincidence, a stroke of strange luck that saved me from the executioner's block.
                 </p>
-                <p class="text-lg mb-4 leading-contained">
+                <p class="text-lg mb-4 leading-relaxed">
+                    Delphine, undeterred by my skepticism, announced she was heading back to Riverwood. Her next plan was to infiltrate the Thalmor Embassy, and she invited me to seek her out if I ever found myself back in Riverwood.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
                     I decided to pass on her invitation for now. I had made a promise to the Greybeards to retrieve the Horn of Jurgen Windcaller, and this whole Thalmor farce had already consumed enough of my valuable time. My focus was on completing the task I had agreed to.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
@@ -606,12 +609,30 @@
                 </p>
             </div>
 
+            <!-- Chapter 24 -->
+            <div id="chapter-24" class="story-chapter">
+                <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-gray-200">Chapter 24: Revisiting Old Allies</h3>
+                <p class="text-lg mb-4 leading-relaxed">
+                    After emerging from the haunted barrow, my mind was at a crossroads. The Greybeards had emphasized taking it slow with new Words of Power, and it had only been a few hours since I'd left High Hrothgar. They wouldn't guide me to another Word Wall so soon. The thought of another arduous trek back to Riften felt daunting, even if the cold wouldn't be as relentless as the mountain passes to Morthal.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    My thoughts turned to Delphine. Paranoid as she was, she was an ally, and it wouldn't hurt to hear her out. Her direct approach, while sometimes misguided, appealed to my own Hammerfell nature. So, I decided to make my way back to Riverwood. The journey was uneventful, a welcome change after the spectral encounters in the barrow and the relentless cold of the mountains.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed">
+                    Upon arrival, I made straight for the Sleeping Giant Inn. I found Delphine behind the counter, her usual watchful expression softening slightly as she saw me. She greeted me with a nod, and I knew, despite our differing views, that our paths were still intertwined. Perhaps her next "plan" would shed more light on these dragon attacks, or at least provide a more tangible course of action than meditative shouts. I settled in, ready to listen.
+                </p>
+                <p class="text-lg mb-4 leading-relaxed italic text-gray-400">
+                    (Fredas, 12:27 PM, 29th of Last Seed, 4E 201)
+                </p>
+            </div>
+
+
             <!-- Story Navigation -->
             <div class="flex justify-between items-center mt-6 pt-4 border-t border-gray-600">
                 <button id="prev-chapter" class="px-5 py-2 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
                     Previous Chapter
                 </button>
-                <span id="chapter-indicator" class="text-lg font-semibold text-gray-300">Chapter 1 of 23</span>
+                <span id="chapter-indicator" class="text-lg font-semibold text-gray-300">Chapter 1 of 24</span>
                 <button id="next-chapter" class="px-5 py-2 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out">
                     Next Chapter
                 </button>
@@ -736,14 +757,36 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        // Import the functions you need from the Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // TODO: Replace the following with your app's Firebase configuration
+        // This is YOUR Firebase project's configuration, obtained from the Firebase Console (Step 2 in my explanation)
+        const firebaseConfig = {
+        apiKey: "AIzaSyByvyY1fYNnqDNXy-ybwMyh9hXATdA-YdI",
+        authDomain: "tomara-character-sheet-counter.firebaseapp.com",
+        projectId: "tomara-character-sheet-counter",
+        storageBucket: "tomara-character-sheet-counter.firebasestorage.app",
+        messagingSenderId: "561471305725",
+        appId: "1:561471305725:web:ac789ff534d1ee6a1f4b94",
+        measurementId: "G-F82Q3640XL"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // --- Existing Story Navigation Logic ---
         const storyChapters = document.querySelectorAll('.story-chapter');
         const prevButton = document.getElementById('prev-chapter');
         const nextButton = document.getElementById('next-chapter');
         const chapterIndicator = document.getElementById('chapter-indicator');
         let currentChapterIndex = 0;
 
-        // Function to update chapter visibility and button states
         function updateStoryDisplay() {
             storyChapters.forEach((chapter, index) => {
                 if (index === currentChapterIndex) {
@@ -759,7 +802,6 @@
             chapterIndicator.textContent = `Chapter ${currentChapterIndex + 1} of ${storyChapters.length}`;
         }
 
-        // Event Listeners for navigation buttons
         prevButton.addEventListener('click', () => {
             if (currentChapterIndex > 0) {
                 currentChapterIndex--;
@@ -774,62 +816,83 @@
             }
         });
 
-        // Initial display update on page load
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- Global Visitor Counter Logic (using Firestore) ---
+        async function updateGlobalVisitorCount() {
+            // Sign in anonymously if not already signed in.
+            // This is required for Firestore Security Rules that depend on `request.auth != null`.
+            try {
+                if (!auth.currentUser) {
+                    await signInAnonymously(auth);
+                    console.log("Signed in anonymously to Firebase.");
+                }
+            } catch (error) {
+                console.error("Error signing in anonymously:", error);
+                // If anonymous sign-in fails, we cannot update the global count via Firestore.
+                // You might choose to display a message or just let it fail silently.
+                return;
+            }
+
+            // Reference to the global visitor count document in Firestore
+            // I've simplified the path based on typical non-Canvas Firebase project structure.
+            const visitorCountRef = doc(db, 'visitorCounts', 'global');
+
+            try {
+                // Increment the count using Firestore's atomic increment operation
+                await setDoc(visitorCountRef, { count: increment(1) }, { merge: true });
+
+                // Get the updated count to display it
+                const updatedDocSnap = await getDoc(visitorCountRef);
+                if (updatedDocSnap.exists()) {
+                    document.getElementById('count-value').textContent = updatedDocSnap.data().count;
+                }
+            } catch (e) {
+                console.error("Error updating global visitor count: ", e);
+                // You could add a fallback local storage counter here if you wish,
+                // but for a *global* counter, a Firestore error means the global count won't update.
+            }
+        }
+
+        // --- Combined DOMContentLoaded and Firebase Logic ---
+        document.addEventListener('DOMContentLoaded', async () => {
             const storySection = document.getElementById('story-section');
             const storyChapters = storySection.querySelectorAll('.story-chapter');
 
-            currentChapterIndex = 0; // Start on the first chapter
+            currentChapterIndex = storyChapters.length - 1; // Start on the latest chapter
             updateStoryDisplay();
 
-            // Add direct chapter access buttons
             const chapterGrid = document.getElementById('chapter-grid');
-            chapterGrid.innerHTML = ''; // Clear existing buttons to avoid duplicates
-            // Dynamically set totalGridSlots based on the actual number of chapters
-            const totalGridSlots = storyChapters.length; 
+            chapterGrid.innerHTML = '';
+            const totalGridSlots = storyChapters.length;
 
             for (let i = 0; i < totalGridSlots; i++) {
                 const chapterButton = document.createElement('button');
-                // Ensure consistent button size and centering
-                // Added flex, items-center, justify-center, and fixed height for consistency
                 chapterButton.classList.add('px-3', 'py-2', 'rounded-lg', 'shadow-md', 'font-bold', 'transition', 'duration-300', 'ease-in-out', 'w-full', 'h-16', 'flex', 'items-center', 'justify-center', 'text-center');
-                
-                // Extract the descriptive part of the title
+
                 const chapterTitleElement = storyChapters[i].querySelector('h3');
-                let buttonText = `Chapter ${i + 1}`; // Default fallback
+                let buttonText = `Chapter ${i + 1}`;
 
                 if (chapterTitleElement && chapterTitleElement.textContent) {
                     const fullTitle = chapterTitleElement.textContent;
                     const colonIndex = fullTitle.indexOf(':');
                     if (colonIndex !== -1) {
-                        buttonText = fullTitle.substring(colonIndex + 2).trim(); // Skip "Chapter X: "
+                        buttonText = fullTitle.substring(colonIndex + 2).trim();
                     } else {
-                        buttonText = fullTitle; // Use full title if format is unexpected
+                        buttonText = fullTitle;
                     }
                 }
                 chapterButton.textContent = buttonText;
-                chapterButton.title = `Go to ${chapterTitleElement ? chapterTitleElement.textContent : `Chapter ${i + 1}`}`; // Full title on hover
+                chapterButton.title = `Go to ${chapterTitleElement ? chapterTitleElement.textContent : `Chapter ${i + 1}`}`;
                 chapterButton.classList.add('bg-purple-700', 'hover:bg-purple-600', 'text-white');
                 chapterButton.addEventListener('click', () => {
                     currentChapterIndex = i;
                     updateStoryDisplay();
                 });
-                
+
                 chapterGrid.appendChild(chapterButton);
             }
 
-            // Visitor Counter Logic
-            const visitorCountElement = document.getElementById('count-value');
-            let visitorCount = localStorage.getItem('skyrimVisitorCount');
-
-            if (visitorCount === null) {
-                visitorCount = 1;
-            } else {
-                visitorCount = parseInt(visitorCount) + 1;
-            }
-
-            localStorage.setItem('skyrimVisitorCount', visitorCount);
-            visitorCountElement.textContent = visitorCount;
+            // Call the global visitor counter update
+            await updateGlobalVisitorCount();
         });
     </script>
 </body>
