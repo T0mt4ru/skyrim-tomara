@@ -354,7 +354,7 @@
                     Morning arrived, crisp and cold, and I began my ascent up the 7000 steps. The journey was a pilgrimage, dotted with shrines every so often – ten in total. I made sure to visit each one, a brief moment of quiet contemplation before continuing. The trip was broken up by other random pilgrims, persistent packs of wolves, and even curious herds of goats. The air grew progressively colder the higher I climbed, the numbing chill starting to creep into my fingers despite the exertion.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
-                    Near the end, with the distant outline of the monastery finally in sight, I spotted a frost troll. Its hulking form was unmistakable. I doused an arrow in some frostbite venom and nocked it, holding my breath, the sheer cold already numbing my fingers. But the troll remained oblivious to my presence. Carefully, I unknocked the poisonous arrow. No need to waste valuable venom just to fell a troll if I could just pass by unnoticed.
+                    Near the end, with the distant outline of the monastery finally in sight, I spotted a frost troll. Its hulking form was unmistakable. I doused an arrow in some frostbite venom and nocked it, holding my breath, the sheer cold already numbing my fingers. But the troll remained oblivious to my presence. Carefully, I unknocked the poisonous arrow. No need to waste valuable venom just to choose a more optimal approach.
                 </p>
                 <p class="text-lg mb-4 leading-relaxed">
                     A few more steps, and two final shrines later, I felt a profound sense of calm wash over me. The air was still cold, biting even, but somehow, being so high up, disconnected from the squabbles of the lower lands, had a strangely calming effect. I reached the large wooden door of the monastery, Klimmek's supplies tucked securely under my arm, and knocked.
@@ -746,40 +746,9 @@
             This playthrough promises to be an incredibly challenging, yet uniquely rewarding experience, forcing a truly "pure" and resourceful approach to Skyrim!
         </p>
 
-        <!-- Visitor Counter and Thanks Note -->
-        <div class="mt-10 p-4 bg-gray-700 rounded-lg shadow-inner text-center">
-            <p id="visitor-count" class="text-lg font-semibold text-gray-300 mb-2">
-                By the Divines, a new traveler approaches! You are the <span id="count-value" class="text-yellow-400">0</span> visitor to this tome.
-            </p>
-            <p class="text-lg text-gray-400">
-                May your road lead you to warm sands. Thank you for visiting!
-            </p>
-        </div>
     </div>
 
     <script type="module">
-        // Import the functions you need from the Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // TODO: Replace the following with your app's Firebase configuration
-        // This is YOUR Firebase project's configuration, obtained from the Firebase Console (Step 2 in my explanation)
-        const firebaseConfig = {
-        apiKey: "AIzaSyByvyY1fYNnqDNXy-ybwMyh9hXATdA-YdI",
-        authDomain: "tomara-character-sheet-counter.firebaseapp.com",
-        projectId: "tomara-character-sheet-counter",
-        storageBucket: "tomara-character-sheet-counter.firebasestorage.app",
-        messagingSenderId: "561471305725",
-        appId: "1:561471305725:web:ac789ff534d1ee6a1f4b94",
-        measurementId: "G-F82Q3640XL"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-
         // --- Existing Story Navigation Logic ---
         const storyChapters = document.querySelectorAll('.story-chapter');
         const prevButton = document.getElementById('prev-chapter');
@@ -816,43 +785,7 @@
             }
         });
 
-        // --- Global Visitor Counter Logic (using Firestore) ---
-        async function updateGlobalVisitorCount() {
-            // Sign in anonymously if not already signed in.
-            // This is required for Firestore Security Rules that depend on `request.auth != null`.
-            try {
-                if (!auth.currentUser) {
-                    await signInAnonymously(auth);
-                    console.log("Signed in anonymously to Firebase.");
-                }
-            } catch (error) {
-                console.error("Error signing in anonymously:", error);
-                // If anonymous sign-in fails, we cannot update the global count via Firestore.
-                // You might choose to display a message or just let it fail silently.
-                return;
-            }
-
-            // Reference to the global visitor count document in Firestore
-            // I've simplified the path based on typical non-Canvas Firebase project structure.
-            const visitorCountRef = doc(db, 'visitorCounts', 'global');
-
-            try {
-                // Increment the count using Firestore's atomic increment operation
-                await setDoc(visitorCountRef, { count: increment(1) }, { merge: true });
-
-                // Get the updated count to display it
-                const updatedDocSnap = await getDoc(visitorCountRef);
-                if (updatedDocSnap.exists()) {
-                    document.getElementById('count-value').textContent = updatedDocSnap.data().count;
-                }
-            } catch (e) {
-                console.error("Error updating global visitor count: ", e);
-                // You could add a fallback local storage counter here if you wish,
-                // but for a *global* counter, a Firestore error means the global count won't update.
-            }
-        }
-
-        // --- Combined DOMContentLoaded and Firebase Logic ---
+        // --- Combined DOMContentLoaded and Counter Logic ---
         document.addEventListener('DOMContentLoaded', async () => {
             const storySection = document.getElementById('story-section');
             const storyChapters = storySection.querySelectorAll('.story-chapter');
@@ -890,9 +823,6 @@
 
                 chapterGrid.appendChild(chapterButton);
             }
-
-            // Call the global visitor counter update
-            await updateGlobalVisitorCount();
         });
     </script>
 </body>
